@@ -141,3 +141,14 @@ const deleteEvent = async (req, res) => {
         next(err);
     }
 };
+
+const eventController = {
+    createEvent,
+    joinEvent,
+    getAllEvents,
+    getMyEvents,
+    updateEvent,
+    deleteEvent
+};
+
+module.exports = eventController;
