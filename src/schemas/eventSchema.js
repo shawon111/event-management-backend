@@ -1,10 +1,12 @@
 const mongoose = require('mongoose');
+const { index } = require('./userSchema');
 const { Schema } = mongoose;
 const eventSchema = new Schema = ({
     title: {
         type: String,
         required: [true, 'Event title is required'],
         trim: true,
+        index: true,
     },
     name: {
         type: String,

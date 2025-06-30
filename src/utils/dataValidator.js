@@ -12,10 +12,10 @@ const validateUser = async (data) => {
 const validateEvent = async (data) => {
     return yup.object().shape({
         title: yup.string().required('Title is required').min(2, 'Title must be at least 2 characters'),
+        name: yup.string().required('Name is required').min(2, 'Name must be at least 2 characters'),
         description: yup.string().optional(),
-        date: yup.date().required('Date is required').min(new Date(), 'Date must be in the future'),
+        dateTime: yup.date().required('Date is required').min(new Date(), 'Date must be in the future'),
         location: yup.string().required('Location is required'),
-        organizer: yup.string().required('Organizer is required'),
     }).validate(data, { abortEarly: false });
 }
 

@@ -4,6 +4,7 @@ const User = require("../models/userModel");
 const bcrypt = require("bcryptjs");
 const { validateUser, validateLogin } = require("../utils/dataValidator");
 
+// Register user
 const registerUser = async (req, res) => {
     const { name, email, password, photoURL } = req.body;
     // Validate input data
@@ -54,6 +55,7 @@ const registerUser = async (req, res) => {
     }
 };
 
+// login user
 const loginUser = async (req, res) => {
     const { email, password } = req.body;
 
@@ -98,6 +100,7 @@ const loginUser = async (req, res) => {
     }
 };
 
+// Logout user
 const logoutUser = (req, res) => {
     res.clearCookie('refreshToken', {
         httpOnly: true,
@@ -108,10 +111,10 @@ const logoutUser = (req, res) => {
     res.status(200).json({ message: 'Logged out successfully' });
 };
 
+// Get user profile
 const getUserProfile = async (req, res) => {
+    const { user } = req;
     try {
-        const user = await User.findById(req.user.id).select('-password');
-        if (!user) return res.status(404).json({ message: 'User not found' });
         res.status(200).json({
             user: {
                 id: user._id,
