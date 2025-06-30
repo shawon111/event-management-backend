@@ -23,7 +23,7 @@ const registerUser = async (req, res) => {
             email,
             password: hashedPassword,
             photoURL,
-        }).select("-password");
+        });
 
         if (!user) {
             return res.status(400).json({ message: 'User registration failed' });
