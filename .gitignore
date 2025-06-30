@@ -10,3 +10,5 @@ jspm_packages/
 .npm
 # dotenv environment variables file
 .env
+.env.local
+.gitignore
