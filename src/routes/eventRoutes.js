@@ -18,9 +18,9 @@ const {
 // Create a new event
 router.post('/', requireAuth, createEvent);
 // Get all events
-router.get('/', getAllEvents);
+router.get('/', requireAuth, getAllEvents);
 // Get event by specific user
-router.get('/:userId', getMyEvents);
+router.get('/:userId', requireAuth, getMyEvents);
 // Join an event
 router.post('/:eventId/join', requireAuth, joinEvent);
 // Delete an event
