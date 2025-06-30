@@ -9,6 +9,9 @@ const requireAuth = async (req, res, next) => {
     try {
         // verify token
         const decoded = jwt.verify(token, process.env.JWT_ACCESS_SECRET);
+        if (!decoded || !decoded.id) {
+            return res.status(401).json({ message: 'Unauthorized: Invalid token' });
+        }
         const userId = decoded.id;
         const user = await User.findById(userId).select('-password');
         if (!user) {
