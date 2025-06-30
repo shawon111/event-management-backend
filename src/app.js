@@ -10,7 +10,7 @@ app.use(express.urlencoded({ extended: true }));
 const allowedOrigins = ['http://localhost:3000', 'https://example.com'];
 const corsOptions = {
     origin: allowedOrigins,
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
     allowedHeaders: ['Content-Type', 'Authorization'],
 };
 
