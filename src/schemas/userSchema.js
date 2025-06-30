@@ -26,7 +26,7 @@ const userSchema = new Schema({
     },
     photoURL: {
         type: String,
-        default: 'https://i.ibb.co/2kR5zq0/default-avatar.png',
+        default: 'https://i.ibb.co/HDQNWrbJ/avatar.png',
     },
     joinedEvents: [
         {
