@@ -1,6 +1,5 @@
 const express = require('express');
 const cors = require('cors');
-const requireAuth = require('./middlewares/requireAuth');
 const app = express();
 
 // app configurations
@@ -17,11 +16,28 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
+// routes
+const userRoutes = require('./routes/userRoutes');
+const eventRoutes = require('./routes/eventRoutes');
+
+app.use('/api/v1/users', userRoutes);
+app.use('/api/v1/events', eventRoutes);
+
 // entry route
 app.get('/', (req, res) => {
     res.status(200).json({
         message: 'Welcome to Eevent management app API',
         status: 'success',
+    });
+});
+
+// global error handler
+app.use((err, req, res, next) => {
+    console.error('Unexpected Error:', err.stack);
+
+    res.status(err.statusCode || 500).json({
+        success: false,
+        message: err.message || 'Something went wrong!',
     });
 });
 
