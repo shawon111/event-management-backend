@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const requireAuth = require('./middlewares/requireAuth');
 const app = express();
 
 // app configurations
