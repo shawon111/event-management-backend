@@ -7,9 +7,9 @@ const requireAuth = require('../middlewares/requireAuth');
 // Controllers
 const {
     createEvent,
-    getAllEvents,
-    getEventById,
     joinEvent,
+    getAllEvents,
+    getMyEvents,
     updateEvent,
     deleteEvent
 } = require('../controllers/eventController');
@@ -19,12 +19,12 @@ const {
 router.post('/', requireAuth, createEvent);
 // Get all events
 router.get('/', getAllEvents);
-// Get a specific event by ID
-router.get('/:eventId', getEventById);
+// Get event by specific user
+router.get('/:userId', getMyEvents);
 // Join an event
 router.post('/:eventId/join', requireAuth, joinEvent);
 // Delete an event
-router.post('/:eventId/leave', requireAuth, deleteEvent);
+router.post('/:eventId/delete', requireAuth, deleteEvent);
 // Update an event
 router.put('/:eventId', requireAuth, updateEvent);
 

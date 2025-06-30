@@ -1,4 +1,4 @@
-import { generateAccessToken, generateRefreshToken } from "../utils/manageTokens";
+const { generateAccessToken, generateRefreshToken } = require("../utils/manageTokens");
 
 const User = require("../models/userModel");
 const bcrypt = require("bcryptjs");
